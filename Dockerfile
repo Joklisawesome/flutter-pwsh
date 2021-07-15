@@ -1,6 +1,8 @@
 from atlassian/default-image
 
-WORKDIR .
+RUN useradd -ms /bin/bash developer
+USER developer
+WORKDIR /home/developer
 
 RUN apt-get update \
     && apt-get install -y wget apt-transport-https software-properties-common \
@@ -10,19 +12,13 @@ RUN apt-get update \
     && apt-get install -y powershell
 # POWERSHELL_TELEMETRY_OPTOUT=1
 
-RUN echo "before flutter installation"
-RUN ls .
+RUN echo "Current directory and pwd"
+RUN ls . && pwd
 
-RUN mkdir development \
-    && cd development \
-    && git clone https://github.com/flutter/flutter.git -b stable \
-    && export PATH="$PATH:`pwd`/flutter/bin:${PATH}" \
+RUN git clone https://github.com/flutter/flutter.git -b stable \
+    #&& export PATH="$PATH:`pwd`/flutter/bin:${PATH}" \
     && flutter upgrade
 
-RUN echo "after flutter installation"
-RUN ls .
+ENV PATH "$PATH:/home/developer/flutter/bin"
 
-ENV PATH="/flutter/bin:${PATH}"
-
-RUN echo "current files in workdir:"
-RUN ls .
+RUN flutter doctor
