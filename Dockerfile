@@ -13,10 +13,10 @@ RUN apt-get update \
 RUN mkdir development \
     && cd development \
     && git clone https://github.com/flutter/flutter.git -b stable \
-    && export PATH="$PATH:`pwd`/flutter/bin" \
+    #&& export PATH="$PATH:`pwd`/flutter/bin:${PATH}" \
     && flutter upgrade
 
-ENV PATH="/flutter/bin"
+ENV PATH="/flutter/bin:${PATH}"
 
 RUN echo "current files in workdir:"
 RUN ls
