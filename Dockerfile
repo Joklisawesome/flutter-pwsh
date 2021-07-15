@@ -15,7 +15,7 @@ RUN apt-get update \
 RUN echo "Current directory and pwd"
 RUN ls . && pwd
 
-RUN git clone https://github.com/flutter/flutter.git -b stable \
+RUN git clone https://github.com/flutter/flutter.git -b stable
     #&& export PATH="$PATH:`pwd`/flutter/bin:${PATH}" \
     #&& flutter upgrade
 
