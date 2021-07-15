@@ -17,8 +17,10 @@ RUN ls . && pwd
 
 RUN git clone https://github.com/flutter/flutter.git -b stable \
     #&& export PATH="$PATH:`pwd`/flutter/bin:${PATH}" \
-    && flutter upgrade
+    #&& flutter upgrade
 
 ENV PATH "$PATH:/home/developer/flutter/bin"
+
+RUN flutter upgrade
 
 RUN flutter doctor
