@@ -7,7 +7,7 @@ RUN apt-get update \
     && wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && apt-get update \
-    && apt-get install -y powershell
+    && apt-get install -y powershell \
     && POWERSHELL_TELEMETRY_OPTOUT=1
 
 RUN echo "Current directory and pwd"
