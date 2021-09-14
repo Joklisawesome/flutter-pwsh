@@ -1,4 +1,4 @@
-from atlassian/default-image
+FROM atlassian/default-image
 
 WORKDIR /home/developer
 
@@ -13,12 +13,12 @@ RUN apt-get update \
 RUN echo "Current directory and pwd"
 RUN ls . && pwd
 
-RUN git clone https://github.com/flutter/flutter.git -b stable
+RUN git clone https://github.com/flutter/flutter.git
 
 ENV PATH "$PATH:/home/developer/flutter/bin"
+
+RUN flutter channel stable
 
 RUN flutter upgrade
 
 RUN flutter doctor
-
-RUN ls .
