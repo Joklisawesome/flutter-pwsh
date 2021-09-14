@@ -20,3 +20,5 @@ ENV PATH "$PATH:/home/developer/flutter/bin"
 RUN flutter upgrade
 
 RUN flutter doctor
+
+RUN ls .
